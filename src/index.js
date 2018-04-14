@@ -1,29 +1,16 @@
 const compose = (...funcs) => {
-  if (funcs.length === 0) {
-    return arg => arg;
+  switch(funcs.length) {
+  case 0: return arg => arg;
+  case 1: return funcs[0];
+  default: return funcs.reduce((a, b) => (...args) => a(b(...args)));
   }
-
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
-
-  return funcs.reduce((a, b) => (...args) => a(b(...args)));
 };
 
-const filterMiddleware = (action, service) => {
-  const {
-    id,
-    middleware,
-    wrapper = middleware => middleware,
-    match = (action, id) => action[`$${id}`]
-  } = service;
-
-  if (match(action, id)) {
-    return wrapper(middleware);
-  };
-
-  return undefined;
-};
+const filterMiddleware = (action, {
+  id,
+  middleware,
+  match = (action, id) => action[`$${id}`]
+}) => match(action, id) ? middleware : undefined;
 
 const higherOrderMiddleware = options => store => next => action => {
   const {

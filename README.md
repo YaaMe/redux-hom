@@ -75,6 +75,91 @@ const multiFeatureAction = {
 };
 ```
 
+### service example
+
+```js
+
+// const action = {
+//     type: 'test',
+//     $storage: 'someKey',
+//     data: 'someValue'
+// }
+const storageMiddleware = store => next => action => {
+  console.log(`storage ${action['$storage']}`, action.data);
+  // localStorage.setItem(action['$storage'], action.data);
+  return next(action);
+};
+
+
+// const action = {
+//   type: 'test',
+//   $batch: ['step-1', 'step-2']
+// };
+const easyBatchMiddleware = store => next => action => {
+  const nextAction = next(action);
+  const { $batch }= action;
+  $batch.map(child => {
+    store.dispatch({
+      type: `${action.type}:${child}`
+    });
+  });
+
+  return nextAction;
+};
+
+// const action = {
+//   type: 'test',
+//   $batch:  [
+//     'step-1',
+//     action => ({ type: `${action.type}:left` }),
+//     async action => {
+//       function timeout(ms) {
+//         return new Promise(resolve => setTimeout(resolve, ms));
+//       }
+//       const asyncFunc = () => new Promise((resolv, reject) => {
+//         setTimeout(
+//           resolv({
+//             type: `${action.type}:async`
+//           })
+//           , 2000);
+//       });
+//       const asyncAction = await asyncFunc();
+//       return asyncAction;
+//     }
+//   ]
+// };
+const batchMiddleware = store => next => action => {
+  const AsyncFunction = (async () => {}).constructor;
+  const nextAction = next(action);
+  const { $batch }= action;
+  $batch.forEach(child => {
+    switch (typeof child) {
+    case 'string': store.dispatch({ type: `${action.type}:${child}`}); break;
+    case 'function':
+      if (child instanceof AsyncFunction) {
+        child(action).then(asyncAction => store.dispatch(asyncAction));
+      } else {
+        store.dispatch(child(action));break;
+      }
+    default: break;
+    };
+  });
+
+  return nextAction;
+};
+
+const services = [{
+  id: 'storage',
+  middleware: storageMiddleware
+}, {
+  id: 'batch',
+  middleware: batchMiddleware
+}];
+
+
+```
+
+
 
 ### TODO
 
