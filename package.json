@@ -1,0 +1,26 @@
+{
+  "name": "redux-hom",
+  "version": "0.1.0",
+  "description": "redux HigherOrderMiddleware",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YaaMe/redux-hom.git"
+  },
+  "keywords": [
+    "redux-hom",
+    "redux",
+    "middleware",
+    "higherOrderMiddleware",
+    "functional"
+  ],
+  "author": "yaame",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YaaMe/redux-hom/issues"
+  },
+  "homepage": "https://github.com/YaaMe/redux-hom#readme"
+}
