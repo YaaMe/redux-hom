@@ -1,6 +1,6 @@
 {
   "name": "redux-hom",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "redux HigherOrderMiddleware",
   "main": "lib/redux-hom.js",
   "module": "es/redux-hom.js",
