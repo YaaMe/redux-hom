@@ -1,9 +1,17 @@
 {
   "name": "redux-hom",
-  "version": "0.1.9",
+  "version": "0.1.15",
   "description": "redux HigherOrderMiddleware",
   "main": "lib/redux-hom.js",
   "module": "es/redux-hom.js",
+  "typings": "./index.d.ts",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src",
+    "index.d.ts"
+  ],
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "test": "cross-env BABEL_ENV=commonjs mocha --compilers js:babel-core/register --reporter spec test/*.js",
