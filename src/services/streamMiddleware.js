@@ -1,16 +1,16 @@
 const streamHandler = async (tasks, dispatch) => {
+  const task = tasks.pop();
   if (tasks.length > 0) {
-    const task = tasks.pop();
     const action = await streamHandler(tasks, dispatch);
     dispatch(action);
     return await task(action);
   }
-  return undefined;
+  return await task();
 };
 
-export default streamMiddleware = store => next => action => {
-  streamHandler(action.$stream, store.dispatch);
+const streamMiddleware = store => next => action => {
+  streamHandler(action.$stream, store.dispatch).then(last => store.dispatch(last));
   return next(action);
 };
 
-
+export default streamMiddleware;
