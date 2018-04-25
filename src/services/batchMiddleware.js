@@ -5,7 +5,7 @@ const batchMiddleware = store => next => action => {
     switch (typeof child) {
       case 'string': store.dispatch({ type: `${action.type}:${child}`}); break;
       case 'function':
-        if (child.constructor.name === 'AsyncFunction') {
+        if (child.constructor.name === 'AsyncFunction' || child.constructor.name === 'Promise') {
           child(action).then(asyncAction => store.dispatch(asyncAction));
         } else {
           store.dispatch(child(action));break;
