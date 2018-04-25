@@ -182,3 +182,4 @@ export const fetchMiddleware = store => next => action => {
 + add test case & ci
 + maybe something more
 + finish them & build module
++ clean babel plugin

@@ -1,5 +1,3 @@
-const AsyncFunction = (async () => {}).constructor;
-
 const batchMiddleware = store => next => action => {
   const nextAction = next(action);
   const { $batch }= action;
@@ -7,7 +5,7 @@ const batchMiddleware = store => next => action => {
     switch (typeof child) {
       case 'string': store.dispatch({ type: `${action.type}:${child}`}); break;
       case 'function':
-        if (child instanceof AsyncFunction) {
+        if (child.constructor.name === 'AsyncFunction') {
           child(action).then(asyncAction => store.dispatch(asyncAction));
         } else {
           store.dispatch(child(action));break;

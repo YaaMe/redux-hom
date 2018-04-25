@@ -1,4 +1,4 @@
-const streamHandler = async (tasks, dispatch) => {
+async function streamHandler(tasks, dispatch) {
   const task = tasks.pop();
   if (tasks.length > 0) {
     const action = await streamHandler(tasks, dispatch);
