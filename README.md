@@ -159,8 +159,9 @@ export const fetchMiddleware = store => next => action => {
 ### TODO
 
 + more detail about usage
++ need example
 + try to merge feature like `redux-batch-action` or `redux-pack`
-+ add test case & ci
++ add circle ci
 + maybe something more
 + finish them & build module
 + clean babel plugin
