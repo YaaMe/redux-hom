@@ -1,11 +1,11 @@
 import compose from './compose';
-import filterMiddleware from './filterMiddleware';
+import middlewareFilter from './middlewareFilter';
 
 export default function higherOrderMiddleware (options) {
   return store => next => action => {
     const {
       services = [],
-      filter = filterMiddleware
+      filter = middlewareFilter
     } = options;
 
     let chain = services.reduce((register, service) => {

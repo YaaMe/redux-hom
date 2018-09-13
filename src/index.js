@@ -1,7 +1,7 @@
 import higherOrderMiddleware from './higherOrderMiddleware';
-import filterMiddleware from './filterMiddleware';
+import middlewareFilter from './middlewareFilter';
 
 export {
   higherOrderMiddleware,
-  filterMiddleware,
+  middlewareFilter,
 }
