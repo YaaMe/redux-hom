@@ -38,35 +38,16 @@ const services = [{
     id: 'featureB',
     middleware: featureMiddlewareB
 }];
-
-const someReducer = (state, action) => {
-	switch (action.type) {
-		case 'DO_THING': return 'thing';
-		case 'DO_OTHER': return 'other';
-		default: return state;
-	};
-};
-
-const store = createStore(
-    combineReducers({
-        someReducer
-    }),
-    applyMiddleware(
-        ...middlewares,
-        higherOrderMiddleware({ services })
-    )
-);
+export default higherOrderMiddleware({ services })
 
 const normalAction = {
     type: 'DO_NORMAL'
 };
-store.dispatch(normalAction);
 
 const featureAction = {
     type: 'NEED_SOME_FEATURE',
     $featureA: []
 };
-store.dispatch(featureAction);
 
 const multiFeatureAction = {
     type: 'NEED_MULTI_FEATURE',
