@@ -163,7 +163,6 @@ export const fetchMiddleware = store => next => action => {
 
 
 ```
-> you can find more in ./services 
 
 ### Why?
 
@@ -409,4 +408,4 @@ combineReducers({
 + add circle ci
 + maybe something more
 + finish them & build module
-+ clean babel plugin
++ testing common services
