@@ -5,31 +5,11 @@ redux HigherOrderMiddleware
 
 ## usage
 
+#### define middleware
+
 ```js
-const { applyMiddleware, createStore, combineReducers } = require('redux');
+const { applyMiddleware } = require('redux');
 const { higherOrderMiddleware } = require('redux-hom');
-
-const middlewareA = store => next => action => {
-    // some logic
-    return next(action);
-};
-
-const middlewareB = store => next => action => {
-    // some logic
-    return next(action);
-};
-
-const middlewares = [middlewareA, middlewareB];
-
-const featureMiddlewareA = store => next => action => {
-    // some interesting logic;
-    return next(action);
-};
-
-const featureMiddlewareB = store => next => action => {
-    // some interesting logic;
-    return next(action);
-};
 
 const services = [{
     id: 'featureA',
@@ -38,8 +18,15 @@ const services = [{
     id: 'featureB',
     middleware: featureMiddlewareB
 }];
-export default higherOrderMiddleware({ services })
 
+export default applyMiddleware(
+    ...middlewares,
+    higherOrderMiddleware({ services })
+);
+```
+
+#### define action
+```js
 const normalAction = {
     type: 'DO_NORMAL'
 };
@@ -55,6 +42,22 @@ const multiFeatureAction = {
     $featureB: []
 };
 ```
+
+#### if you want diy match
+
+```js
+const services = [{
+    id: 'featureA',
+    middleware: featureMiddlewareA,
+    match: (action, id) => new RegExp(`:${id}`).test(action.type)
+}]
+
+const action = {
+    type: 'ACTION:featureA:featureB'
+}
+```
+
+#### 
 
 ### service example
 
@@ -153,8 +156,11 @@ export const fetchMiddleware = store => next => action => {
 
 
 ```
+> you can find more in ./services
 
+### why
 
+> it's a long story....I will try to update next time
 
 ### TODO
 
