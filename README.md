@@ -1,8 +1,7 @@
 # redux-hom
 redux HigherOrderMiddleware
-[![npm version](https://img.shields.io/npm/v/redux-hom.svg?style=flat-square)](https://www.npmjs.com/package/redux-hom)
 
-> it's wait for more information
+[![npm version](https://img.shields.io/npm/v/redux-hom.svg?style=flat-square)](https://www.npmjs.com/package/redux-hom)
 
 ## Installation
 
