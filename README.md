@@ -338,7 +338,7 @@ dispatch({
 const client1Middleware = store => next => action => {
   const {
     request,
-    onSuccess = data => store.dispatch({type: `${action.type}_SUCCESS_`, data}), // you can set default here
+    onSuccess = data => store.dispatch({type: `${action.type}_SUCCESS`, data}), // you can set default here
     onError = () => {...} 
   } = action.$client1;
   client1(request).then(onSuccess).catch(onError);
