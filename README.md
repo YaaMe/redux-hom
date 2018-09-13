@@ -172,7 +172,7 @@ here's the [history](https://medium.com/@jacobp100/you-arent-using-redux-middlew
 
 ##### for example 1: storage case
 
-###### 1. you want to have a storage
+###### 1. you want to storage
 
 ```js
 const someFunction = value => {
