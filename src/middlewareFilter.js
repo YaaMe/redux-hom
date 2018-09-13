@@ -1,4 +1,4 @@
-export default function filterMiddleware (action, {
+export default function middlewareFilter (action, {
   id,
   middleware,
   match = (action, id) => action[`$${id}`]
