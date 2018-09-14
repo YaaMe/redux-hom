@@ -49,7 +49,7 @@ const multiFeatureAction = {
 };
 ```
 
-#### if you want diy match
+#### if you want DIY match
 
 ```js
 const services = [{
@@ -63,7 +63,7 @@ const action = {
 }
 ```
 
-#### if you want diy service config
+#### if you want DIY service config
 
 ```js
 const services = [{
