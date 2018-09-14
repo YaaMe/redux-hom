@@ -63,7 +63,17 @@ const action = {
 }
 ```
 
-#### 
+#### if you want diy service config
+
+```js
+const services = [{
+    id: 'featureA',
+    middleware: featureMiddlewareA,
+    options: {}
+}]
+const filter = (action, service) => service.middleware;
+higherOrderMiddleware({ services, filter })
+```
 
 ### service example
 
