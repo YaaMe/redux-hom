@@ -68,7 +68,7 @@
         "eslint-config-airbnb": "1.0.2",
         "eslint-plugin-react": "^4.1.0",
         "mocha": "^5.2.0",
-        "redux": "^3.4.0",
+        "redux": "^4.0.4",
         "regenerator-runtime": "^0.11.1",
         "rimraf": "^2.5.2",
         "rollup": "^0.58.0",
