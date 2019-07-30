@@ -77,6 +77,6 @@
         "rollup-plugin-replace": "^2.0.0",
         "rollup-plugin-uglify": "^4.0.0",
         "typescript": "^1.8.10",
-        "typescript-definition-tester": "0.0.4"
+        "typescript-definition-tester": "0.0.6"
     }
 }
